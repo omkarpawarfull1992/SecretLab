@@ -1,0 +1,58 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+dataset = pd.read_csv('claimdata.csv')
+
+>>Columns
+df.columns
+
+>>Head
+df_train.head(n)          #n is number of records to display.
+
+>>Describe Columns
+df.describe()
+df.describe(['columnName'])
+df.describe([['columnName1','columnName2']])
+
+>>Query
+df.query('PetID==2')
+
+>>Display Graph in new window
+%matplotlib qt
+	OR
+%matplotlib inline
+
+>>Replace nan values in place:
+df['Prev1Claim'].fillna(0,inplace=True)
+
+>>Test to check if there is any column with value nan
+df.isnull().values.any()
+
+>>Test to get Percentage Null
+df_train.isnull().sum()*100/len(df_train)
+
+>>Binning 
+df_train['Fare'] = pd.cut(df_train['Fare'], bins=[-1, 7, 11, 15, 22, 40, 520], labels=[1, 2, 3, 4, 5, 6])
+
+>>Distinct Value
+df_train['Ticket Section'].unique()
+
+>>DataFrame Column
+df_train.columns
+
+>>confusion metrix
+from sklearn.metrics import confusion_matrix
+cm=confusion_matrix(y_valid, y_pred)
+
+>># For alphabet
+>>> 'A'.isdigit()
+False
+>>> 'A'.isalpha()
+True
+
+# For digit
+>>> '1'.isdigit()
+True
+>>> '1'.isalpha()
+False
